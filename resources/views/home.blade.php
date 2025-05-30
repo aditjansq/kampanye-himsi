@@ -381,7 +381,7 @@
 
   <div class="text-center mt-6">
     <a 
-      href="{{ asset('images/inertia.pdf') }}" 
+      href="{{ asset('images/Inertia.pdf') }}" 
       download 
       class="inline-block bg-utama text-white font-semibold px-6 py-3 rounded-xl shadow-md hover:bg-utama/90 transition-colors"
     >
