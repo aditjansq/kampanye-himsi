@@ -465,7 +465,7 @@
       perPage: 1,
       intervalId: null,
       testimonials: [
-        { id: 1, name: "Andi Wijaya", role: "Mahasiswa SI 2023", photo: "https://randomuser.me/api/portraits/men/32.jpg", message: "Kandidat ini sangat komunikatif dan punya visi jelas untuk kemajuan HIMSI. Saya sangat mendukung!" },
+        { id: 1, name: "Tri Ayu Miranda", role: "Komandan Pasukan The Great MB", photo: "https://randomuser.me/api/portraits/men/32.jpg", message: "Kandidat ini orangnya ramah, mudah diajak diskusi, dan punya ide-ide bagus buat HIMSI ke depannya.Saya yakin mereka berdua bisa jadi pemimpin yang membawa perubahan yang baik. Ayo kita dukung sama-sama" },
         { id: 2, name: "Sari Putri", role: "Mahasiswa SI 2022", photo: "https://randomuser.me/api/portraits/women/45.jpg", message: "Saya merasa kandidat ini sangat peduli pada mahasiswa dan punya rencana yang realistis." },
         { id: 3, name: "Budi Santoso", role: "Mahasiswa SI 2024", photo: "https://randomuser.me/api/portraits/men/56.jpg", message: "Energi dan dedikasi mereka sungguh menginspirasi. Cocok jadi pemimpin HIMSI ke depan." },
         { id: 4, name: "Lina Hartati", role: "Mahasiswa SI 2021", photo: "https://randomuser.me/api/portraits/women/55.jpg", message: "Program kerja yang ditawarkan sangat menyentuh kebutuhan kami. Keren banget!" },
