@@ -92,7 +92,7 @@
 
   <!-- Nomor Urut Tengah -->
   <div class="absolute left-1/2 -translate-x-1/2 -top-2 md:top-0 text-7xl font-extrabold text-utama select-none pointer-events-none z-10">
-    1
+    3
   </div>
 
   <!-- Ketua -->
