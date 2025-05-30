@@ -92,7 +92,7 @@
 
   <!-- Nomor Urut Tengah -->
   <div class="absolute left-1/2 -translate-x-1/2 -top-2 md:top-0 text-7xl font-extrabold text-utama select-none pointer-events-none z-10">
-    3
+    03
   </div>
 
   <!-- Ketua -->
@@ -416,7 +416,7 @@
       </svg>
     </button>
 
-    <!-- Testimoni 1 Card -->
+    <!-- Testimoni Card -->
     <template x-for="item in pagedTestimonials" :key="item.id">
       <div
         class="bg-white rounded-xl shadow-md p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300 cursor-pointer w-full max-w-md sm:max-w-xl"
@@ -428,7 +428,14 @@
         x-transition:leave-end="opacity-0 -translate-x-10"
       >
         <div class="flex items-center space-x-3 sm:space-x-4 mb-3 sm:mb-4">
-          <img :src="item.photo" alt="Foto Mahasiswa" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-emas" />
+          <!-- Jika ada photoUrl, tampilkan gambar, kalau tidak tampilkan placeholder inisial -->
+          <template x-if="item.photo && item.photo.startsWith('http') || item.photo && item.photo.includes('.')">
+            <img :src="item.photo" alt="Foto Mahasiswa" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-emas" />
+          </template>
+          <template x-if="!item.photo || !(item.photo.startsWith('http') || item.photo.includes('.'))">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-emas bg-utama text-white flex items-center justify-center font-bold text-lg sm:text-xl select-none" x-text="item.initials"></div>
+          </template>
+
           <div>
             <p class="font-semibold text-utama text-sm sm:text-base" x-text="item.name"></p>
             <p class="text-gray-500 text-xs sm:text-sm" x-text="item.role"></p>
@@ -459,7 +466,7 @@
         @click="goToPageManual(page)"
         class="w-3 h-3 rounded-full"
         :class="page === currentPage ? 'bg-utama' : 'bg-gray-300 hover:bg-utama/70 transition-colors'"
-        aria-label="'Go to page ' + page"
+        :aria-label="'Go to page ' + page"
       ></button>
     </template>
   </div>
@@ -467,63 +474,164 @@
 
 <script>
   function testimonialPagination() {
+    // Data diacak dan inisial di-generate otomatis
+    const rawTestimonials = [
+      { 
+        id: 1, 
+        name: "Tri Ayu Miranda", 
+        role: "Komandan Pasukan The Great MB 2024", 
+        photo: "images/ate.jpg", // placeholder inisial
+        message: "Kandidat ini orangnya ramah, mudah diajak diskusi, dan punya ide-ide bagus buat HIMSI ke depannya. Saya yakin mereka berdua bisa jadi pemimpin yang membawa perubahan yang baik. Ayo kita dukung sama-sama." 
+      },
+      { 
+        id: 2, 
+        name: "Georgerius Alesandro C", 
+        role: "Wakil Ketua Umum Kosma 2024", 
+        photo: "images/geri.jpg", // placeholder inisial
+        message: "Semangat memberikan perubahan, dan dorong kemajuan menjadi kenyataan demi HIMSI lebih baik." 
+      },
+      { 
+        id: 3, 
+        name: "M. Zaky Naufal Farisky", 
+        role: "Wakil Ketua Umum LDK", 
+        photo: "", // placeholder inisial akan dibuat
+        message: "Saya melihat potensi yang besar pada pasangan ini, ambisi yang kuat untuk membawa Himsi to the next level." 
+      },
+      { 
+        id: 4, 
+        name: "Reza Ramadani", 
+        role: "Ketua Himpunan Fisika PGRI 2023", 
+        photo: "images/reza.jpg", // placeholder inisial akan dibuat
+        message: "Jiwa Integritas dan loyalitas tinggi adalah sifat yang harus dimiliki oleh pemimpin, dan saya melihat itu pada paslon 03 ini." 
+      },
+      { 
+        id: 5, 
+        name: "Kristian Fernando", 
+        role: "Ketua UKM BASKET UMDP", 
+        photo: "", // placeholder inisial akan dibuat
+        message: "Pada kandidat ini terlihat jiwa wibawah yang dapat memimpin sebuah organisasi dengan menyatukan sosial antara anggota menjadi satu, dan dapat memajukan himpunan menjadi lebih baik." 
+      },
+      { 
+        id: 6, 
+        name: "Andhika Rizky Cahya P", 
+        role: "KETUA UMUM HIMIF", 
+        photo: "", // placeholder inisial akan dibuat
+        message: "Menurut saya, paslon ini memiliki ide dan misi yang visioner untuk masa depan himsi. Paslon ini melakukan gebrakan dgn mengadakan proker inovatif BUKAN TEMPLATE BELAKA #MudaKreatifBerwawasanGlobal."
+      },
+      { 
+        id: 7, 
+        name: "Ovan Kurniawan", 
+        role: "Mahasiswa SI 2022", 
+        photo: "", // placeholder inisial akan dibuat
+        message: "Menurut saya kandidat ini sangat komunikatif, terbuka, dan mempunyai visi dan misi yang jelas akan memberikan manfaat kepada mahasiswa SI." 
+      },
+      { 
+        id: 8, 
+        name: "Putri Aprillia", 
+        role: "Ketua Umum HIMAKSI", 
+        photo: "", // placeholder inisial akan dibuat
+        message: "Kepemimpinan bukan hanya soal popularitas, tapi soal konsistensi, kejujuran, dan komitmen. Darren Lowell Dan Adit Jansa sudah menunjukkan semua itu dalam setiap langkahnya. bekerja tanpa banyak sorotan, dan selalu mengedepankan kepentingan bersama. Inilah saatnya kita memberi kepercayaan pada seseorang yang benar-benar layak." 
+      },
+      { 
+        id: 9, 
+        name: "Muhammad Ammar Kanz", 
+        role: "Ketua Umum Himafisipal Unsri 2022-2023", 
+        photo: "MAK", // placeholder inisial
+        message: "HIMSI merupakan wadah sarana untuk mahasiswa jurusan SI menuangkan dan menyalurkan intelektual dan kreativitas mereka dan diperlukan calon pemimpin yg dapat mengakomodasi wadah tsb sesuai yg diharapkan, saya percaya calon kandidat ini memiliki kemampuan tsb." 
+      },
+      { id: 10, name: "Vicky S.", role: "Ketua Umum UKM Programming 2023-2024", photo: "", message: "Darren dan Adit merupakan sosok yang memiliki gabungan antara semangat yang membara, inisiatif yang tinggi, dan etos yang baik. Semoga karakter tersebut bisa menjadi landasan untuk membawa HIMSI terus maju." }
+
+    ];
+
+    // Fungsi buat ambil inisial dari nama
+    function getInitials(name) {
+      const parts = name.split(' ').filter(Boolean);
+      if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+      else return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+    }
+
+    // Tambah properti initials jika belum ada (foto placeholder)
+    rawTestimonials.forEach(t => {
+      if (!t.photo || !t.photo.includes('.')) {
+        t.initials = getInitials(t.name);
+      } else {
+        t.initials = '';
+      }
+    });
+
+    // Acak array (Fisher-Yates shuffle)
+    for (let i = rawTestimonials.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [rawTestimonials[i], rawTestimonials[j]] = [rawTestimonials[j], rawTestimonials[i]];
+    }
+
     return {
       currentPage: 1,
       perPage: 1,
       intervalId: null,
-      testimonials: [
-        { id: 1, name: "Tri Ayu Miranda", role: "Komandan Pasukan The Great MB 2024", photo: "images/ate.jpg", message: "Kandidat ini orangnya ramah, mudah diajak diskusi, dan punya ide-ide bagus buat HIMSI ke depannya. Saya yakin mereka berdua bisa jadi pemimpin yang membawa perubahan yang baik. Ayo kita dukung sama-sama" },
-        { id: 2, name: "Georgerius Alesandro C", role: "Wakil Ketua Umum Kosma 2024", photo: "images/geri.jpg", message: "semangat memberikan perubahan, dan dorong kemajuan menjadi kenyataan demi HIMSI lebih baik." },
-        { id: 3, name: "M. Zaky Naufal Farisky", role: "Wakil Ketua Umum LDK", photo: "https://cdn.idntimes.com/content-images/post/20240207/33bac083ba44f180c1435fc41975bf36-ca73ec342155d955387493c4eb78c8bb.jpg", message: "Saya melihat potensi yang besar pada pasangan ini, ambisi yang kuat untuk membawa Himsi to the next level." },
-        { id: 4, name: "Reza Ramadani", role: "Ketua Himpunan Fisika PGRI 2023", photo: "https://cdn.idntimes.com/content-images/post/20240207/33bac083ba44f180c1435fc41975bf36-ca73ec342155d955387493c4eb78c8bb.jpg", message: "Jiwa Integritas dan loyalitas tinggi adalah sifat yang harus dimiliki oleh pemimpin, dan saya melihat itu pada paslon 03 ini." },
-        { id: 5, name: "Kristian Fernando", role: "Ketua UKM BASKET UMDP", photo: "https://cdn.idntimes.com/content-images/post/20240207/33bac083ba44f180c1435fc41975bf36-ca73ec342155d955387493c4eb78c8bb.jpg", message: "Pada kandidat ini terlihat jiwa wibawah yang dapat memimpin sebuah organisasi dengan menyatukan sosial antara anggota menjadi satu, dan dapat memajukan himpunan menjadi lebih baik" },
-        { id: 6, name: "Andhika Rizky Cahya P", role: "KETUA UMUM HIMIF", photo: "https://cdn.idntimes.com/content-images/post/20240207/33bac083ba44f180c1435fc41975bf36-ca73ec342155d955387493c4eb78c8bb.jpg", message: "Menurut saya, paslon ini memiliki ide dan misi yang visioner untuk masa depan himsi.  Paslon ini melakukan gebrakan dgn mengadakan proker inovatif BUKAN TEMPLATE BELAKA #MudaKreatifBerwawasanGlobal".},
-        { id: 7, name: "Ovan Kurniawan", role: "Mahasiswa SI 2022", photo: "https://cdn.idntimes.com/content-images/post/20240207/33bac083ba44f180c1435fc41975bf36-ca73ec342155d955387493c4eb78c8bb.jpg", message: "Menurut saya kandidat ini sangat komunikatif, terbuka, dan mempunyai visi dan misi yang jelas akan memberikan manfaat kepada mahasiswa SI" },
-        { id: 8, name: "Putri Aprillia", role: "Ketua Umum HIMAKSI", photo: "https://cdn.idntimes.com/content-images/post/20240207/33bac083ba44f180c1435fc41975bf36-ca73ec342155d955387493c4eb78c8bb.jpg", message: "Kepemimpinan bukan hanya soal popularitas, tapi soal konsistensi, kejujuran, dan komitmen. Darren Lowell  Dan Adit Jansa sudah menunjukkan semua itu dalam setiap langkahnya. bekerja tanpa banyak sorotan, dan selalu mengedepankan kepentingan bersama. Inilah saatnya kita memberi kepercayaan pada seseorang yang benar-benar layak." }
-      ],
+      testimonials: rawTestimonials,
+
       get totalPages() {
         return Math.ceil(this.testimonials.length / this.perPage);
       },
+
       get pagedTestimonials() {
         const start = (this.currentPage - 1) * this.perPage;
         return this.testimonials.slice(start, start + this.perPage);
       },
+
       nextPage() {
         this.currentPage = this.currentPage === this.totalPages ? 1 : this.currentPage + 1;
       },
+
       prevPage() {
         this.currentPage = this.currentPage === 1 ? this.totalPages : this.currentPage - 1;
       },
+
       goToPage(page) {
         this.currentPage = page;
       },
+
       nextPageManual() {
         this.nextPage();
         this.restartAutoScroll();
       },
+
       prevPageManual() {
         this.prevPage();
         this.restartAutoScroll();
       },
+
       goToPageManual(page) {
         this.goToPage(page);
         this.restartAutoScroll();
       },
+
       startAutoScroll() {
         this.intervalId = setInterval(() => {
           this.nextPage();
-        }, 4000);
+        }, 6000);
       },
+
       restartAutoScroll() {
         clearInterval(this.intervalId);
         this.startAutoScroll();
       },
+
       destroy() {
         clearInterval(this.intervalId);
       }
     }
   }
 </script>
+
+<style>
+  /* Warna utama dan emas untuk tema */
+  .text-utama { color: #2c3e50; }
+  .bg-utama { background-color: #2c3e50; }
+  .border-emas { border-color: #d4af37; }
+</style>
+
 
 
 
