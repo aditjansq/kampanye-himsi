@@ -467,10 +467,10 @@
       testimonials: [
         { id: 1, name: "Tri Ayu Miranda", role: "Komandan Pasukan The Great MB 2024", photo: "images/ate.jpg", message: "Kandidat ini orangnya ramah, mudah diajak diskusi, dan punya ide-ide bagus buat HIMSI ke depannya. Saya yakin mereka berdua bisa jadi pemimpin yang membawa perubahan yang baik. Ayo kita dukung sama-sama" },
         { id: 2, name: "Georgerius Alesandro C", role: "Wakil Ketua Umum Kosma 2024", photo: "images/geri.jpg", message: "semangat memberikan perubahan, dan dorong kemajuan menjadi kenyataan demi HIMSI lebih baik." },
-        { id: 3, name: "Budi Santoso", role: "Mahasiswa SI 2024", photo: "https://randomuser.me/api/portraits/men/56.jpg", message: "Energi dan dedikasi mereka sungguh menginspirasi. Cocok jadi pemimpin HIMSI ke depan." },
-        { id: 4, name: "Lina Hartati", role: "Mahasiswa SI 2021", photo: "https://randomuser.me/api/portraits/women/55.jpg", message: "Program kerja yang ditawarkan sangat menyentuh kebutuhan kami. Keren banget!" },
-        { id: 5, name: "Rizky Maulana", role: "Mahasiswa SI 2022", photo: "https://randomuser.me/api/portraits/men/67.jpg", message: "Saya percaya dengan kepemimpinan mereka, HIMSI bisa semakin maju dan solid!" },
-        { id: 6, name: "Dewi Kartika", role: "Mahasiswa SI 2023", photo: "https://randomuser.me/api/portraits/women/68.jpg", message: "Sangat inspiratif dan selalu responsif terhadap kebutuhan mahasiswa." }
+        { id: 3, name: "M. Zaky Naufal Farisky", role: "Wakil Ketua Umum LDK", photo: "https://cdn.idntimes.com/content-images/post/20240207/33bac083ba44f180c1435fc41975bf36-ca73ec342155d955387493c4eb78c8bb.jpg", message: "Saya melihat potensi yang besar pada pasangan ini, ambisi yang kuat untuk membawa Himsi to the next level." },
+        { id: 4, name: "Kristofer Fernando", role: "Ketua UKM BASKET UMDP", photo: "https://cdn.idntimes.com/content-images/post/20240207/33bac083ba44f180c1435fc41975bf36-ca73ec342155d955387493c4eb78c8bb.jpg", message: "Pada kandidat ini terlihat jiwa wibawah yang dapat memimpin sebuah organisasi dengan menyatukan sosial antara anggota menjadi satu, dan dapat memajukan himpunan menjadi lebih baik" },
+        { id: 5, name: "Andhika Dwi Cahya", role: "KETUA UMUM HIMIF", photo: "https://cdn.idntimes.com/content-images/post/20240207/33bac083ba44f180c1435fc41975bf36-ca73ec342155d955387493c4eb78c8bb.jpg", message: "Pagi pagi ngaduk semen\nSambil makan nasi goreng\nJangan lupa coblos Darren dan Adit\nJadi ketua dan wakil HIMSI" },
+        { id: 6, name: "Ovan Kurniawan", role: "Mahasiswa SI 2022", photo: "https://cdn.idntimes.com/content-images/post/20240207/33bac083ba44f180c1435fc41975bf36-ca73ec342155d955387493c4eb78c8bb.jpg", message: "Menurut saya kandidat ini sangat komunikatif, terbuka, dan mempunyai visi dan misi yang jelas akan memberikan manfaat kepada mahasiswa SI" }
       ],
       get totalPages() {
         return Math.ceil(this.testimonials.length / this.perPage);
