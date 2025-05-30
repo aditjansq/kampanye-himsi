@@ -326,10 +326,17 @@
 <!-- Spacer hanya di desktop -->
 <div class="hidden md:block h-2"></div>
 
+<div class="flex justify-center items-center mb-6 md:mb-10">
+  <img 
+    src="{{ asset('images/kabinet.png') }}" 
+    alt="Logo HIMSI" 
+    class="w-24 md:w-32 h-auto"
+  />
+</div>
 
 
 <!-- Video Perkenalan Kandidat -->
-<div class="max-w-4xl mx-auto mt-12 mb-10 md:mb-16 px-4">
+<!-- <div class="max-w-4xl mx-auto mt-12 mb-10 md:mb-16 px-4">
   <h2 class="text-2xl font-bold mb-4 text-utama text-center">Video Perkenalan Kandidat</h2>
   <div 
     class="relative rounded-xl overflow-hidden shadow-lg aspect-w-16 aspect-h-9 min-h-[200px] md:min-h-[400px]"
@@ -343,7 +350,7 @@
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     ></iframe>
   </div>
-</div>
+</div> -->
 
 
 
