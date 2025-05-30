@@ -625,12 +625,7 @@
   }
 </script>
 
-<style>
-  /* Warna utama dan emas untuk tema */
-  .text-utama { color: #2c3e50; }
-  .bg-utama { background-color: #2c3e50; }
-  .border-emas { border-color: #d4af37; }
-</style>
+
 
 
 
