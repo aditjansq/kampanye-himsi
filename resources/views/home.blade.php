@@ -302,7 +302,7 @@
 
 
 
-    <audio x-ref="audioWakil" src="{{ asset('audio/Kami Belum Tentu.mp3') }}" preload="auto" @ended="isPlaying = false"></audio> 
+    <audio x-ref="audioWakil" src="{{ asset('audio/Basket Case.mp3') }}" preload="auto" @ended="isPlaying = false"></audio> 
   </div>
 
 </div>
