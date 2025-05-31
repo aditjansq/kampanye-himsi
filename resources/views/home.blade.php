@@ -368,7 +368,7 @@
   <!-- Iframe hanya tampil di desktop -->
   <div class="hidden md:block relative rounded-xl overflow-hidden shadow-lg aspect-w-16 aspect-h-9 min-h-[250px] md:min-h-[500px]">
     <iframe 
-      src="{{ secure_asset('images/Inertia.pdf') }}" 
+      src="https://drive.google.com/file/d/1hZP19MP7ylKATaiCOrG7y7HE8B1l1psB/view?usp=sharing" 
       class="absolute top-0 left-0 w-full h-full border rounded-xl"
     ></iframe>
   </div>
