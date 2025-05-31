@@ -196,7 +196,7 @@
     </p>
 
     <!-- Tombol Audio Ketua -->
-    <audio x-ref="audio" src="{{ asset('audio/Timeless (Tiktok Version) - The Weeknd, Playboi Carti [Edit Audio].mp3') }}" preload="auto" @ended="isPlaying = false"></audio>
+    <audio x-ref="audio" src="{{ asset('audio/Kami Belum Tentu.mp3') }}" preload="auto" @ended="isPlaying = false"></audio>
 
   </div>
 
