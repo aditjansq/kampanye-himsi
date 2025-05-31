@@ -367,7 +367,7 @@
   <!-- Iframe hanya tampil di desktop -->
   <div class="hidden md:block relative rounded-xl overflow-hidden shadow-lg aspect-w-16 aspect-h-9 min-h-[250px] md:min-h-[500px]">
     <iframe 
-      src="{{ asset('images/Inertia Bhaskara.pdf') }}" 
+      src="{{ asset('images/Inertia.pdf') }}" 
       class="absolute top-0 left-0 w-full h-full border rounded-xl"
     ></iframe>
   </div>
